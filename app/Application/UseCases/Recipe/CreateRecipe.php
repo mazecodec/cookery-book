@@ -2,8 +2,8 @@
 
 namespace App\Application\UseCases\Recipe;
 
-use App\Domain\Recipe\Domain\Models\Recipe;
 use App\Domain\Recipe\Domain\Ports\In\CreateNewRecipeUseCase;
+use App\Domain\Recipe\Domain\Recipe;
 
 class CreateRecipe implements CreateNewRecipeUseCase
 {

@@ -2,12 +2,13 @@
 
 namespace App\Application\Services;
 
-use App\Domain\Recipe\Domain\Models\Recipe;
 use App\Domain\Recipe\Domain\Ports\In\CreateNewRecipeUseCase;
+use App\Domain\Recipe\Domain\Ports\In\DeleteRecipeUseCase;
 use App\Domain\Recipe\Domain\Ports\In\RetrieveRecipeUseCase;
 use App\Domain\Recipe\Domain\Ports\In\UpdateRecipeUseCase;
+use App\Domain\Recipe\Domain\Recipe;
 
-class RecipeService implements RecipeServiceInterface
+class RecipeService
 {
     public function __construct(
         private readonly RetrieveRecipeUseCase $retrieveRecipe,
@@ -23,12 +24,14 @@ class RecipeService implements RecipeServiceInterface
         string $image,
         array $products = []): Recipe
     {
-        return $this->createService->createNewRecipe(Recipe::create(
-            title: $title,
-            description: $description,
-            image: $image,
-            products: $products
-        ));
+        return $this->createService->createNewRecipe(
+            Recipe::create(
+                title: $title,
+                description: $description,
+                image: $image,
+                products: $products
+            )
+        );
     }
 
     public function delete(int $id): void
@@ -54,15 +57,16 @@ class RecipeService implements RecipeServiceInterface
         string $title,
         string $description,
         string $image,
-        array $products = [],
-        ): Recipe
+        array $products = [],): Recipe
     {
         return $this->updateService->update(
-            id: $id,
-            title: $title,
-            description: $description,
-            image: $image,
-            products: $products,
+            Recipe::create(
+                id: $id,
+                title: $title,
+                description: $description,
+                image: $image,
+                products: $products,
+            )
         );
     }
 }

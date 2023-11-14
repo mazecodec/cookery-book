@@ -2,8 +2,8 @@
 
 namespace App\Application\UseCases\Recipe;
 
-use App\Domain\Recipe\Domain\Models\Recipe;
 use App\Domain\Recipe\Domain\Ports\In\RetrieveRecipeUseCase;
+use App\Domain\Recipe\Domain\Recipe;
 
 class RetrieveRecipe implements RetrieveRecipeUseCase
 {

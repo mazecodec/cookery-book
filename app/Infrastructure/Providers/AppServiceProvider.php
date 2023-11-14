@@ -4,6 +4,7 @@ namespace App\Infrastructure\Providers;
 
 use App\Infrastructure\Commands\ModelMakeCommand;
 use Illuminate\Foundation\Console\ModelMakeCommand as BaseModelMakeCommand;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Schema::defaultStringLength(191);
 //        if ($this->app->runningInConsole()) {
 //            $this->commands([
 //                InstallCommand::class,
