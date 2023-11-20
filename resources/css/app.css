@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --bg-opacity: 1;
+    }
+
+    .is-invalid {
+        @apply border-b-2 border-b-red-500 !important;
+    }
+}

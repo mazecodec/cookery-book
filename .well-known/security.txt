@@ -1,0 +1,6 @@
+# https://laravel-news.com/top-10-laravel-audit-security-issues
+# https://securitytxt.org/
+
+Contact: mailto:mazecode.tec@gmail.com
+Expires: 2026-12-17T00:06:00.000Z
+Preferred-Languages: es

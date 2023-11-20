@@ -2,37 +2,52 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Recipe;
 use App\Http\Requests\StoreRecipeRequest;
 use App\Http\Requests\UpdateRecipeRequest;
+use App\Models\Recipe;
+use App\Services\ImageServices;
+use App\Services\Recipe\RecipeFilterService;
+use App\Services\Recipe\RecipeSortService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index(Request $request, RecipeFilterService $filter, RecipeSortService $sort): View
     {
+        $filters = $filter->make($request->get('filter', []));
+        $sorts = $sort->make($request->get('sort', []));
+
         return view('recipes.index', [
-            'recipes' => Recipe::orderBy('created_at', 'asc')->paginate(3),
+            'request' => $request->all(),
+            'recipes' => Recipe::filter($filters)->sort($sorts)->paginate(100),
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRecipeRequest $request): RedirectResponse
+    public function store(
+        StoreRecipeRequest $request,
+        ImageServices $imageServices): RedirectResponse
     {
-        auth()->user()->recipes()->create([
+        $user = $request->user();
+        $image = $request->hasFile('image') ? $request->file('image') : $request->image;
+
+        $user?->recipes()->create([
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $request->image,
+            'image' => $imageServices->obtainFileInputValue($image),
+            'instructions' => $request->instructions,
             'user_id' => auth()->user(),
         ]);
 
-        return redirect()->route('recipes.index')->with('success', 'Recipe created successfully!');
+        return redirect()->route('recipes.index')
+                         ->with('message', 'Recipe created successfully!');
     }
 
     /**
@@ -64,19 +79,30 @@ class RecipeController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @param UpdateRecipeRequest $request
+     * @param Recipe $recipe
+     * @param ImageServices $imageServices
+     * @return RedirectResponse
      */
-    public function update(UpdateRecipeRequest $request, Recipe $recipe): RedirectResponse
+    public function update(
+        UpdateRecipeRequest $request,
+        Recipe $recipe,
+        ImageServices $imageServices): RedirectResponse
     {
-        $recipe->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'image' => $request->image,
-        ]);
+        $data = $request->validated();
+        $image = $request->hasFile('image') ? $request->file('image') : $request->image;
+
+        if ($data['image'] !== null) {
+            $imageServices->delete($recipe->image);
+            $image = $imageServices->obtainFileInputValue($image, $recipe->image);
+            $data['image'] = $image;
+        }
+
+        $recipe->update($data);
 
         return redirect()->route('recipes.show', [
             'recipe' => $recipe,
-        ])->with('success', 'Recipe updated successfully!');
+        ])->with('message', 'Recipe updated successfully!');
     }
 
     /**
@@ -86,6 +112,6 @@ class RecipeController extends Controller
     {
         $recipe->delete();
 
-        return redirect()->route('recipes.index')->with('success', 'Recipe deleted successfully!');
+        return back()->with('message', 'Recipe deleted successfully!');
     }
 }

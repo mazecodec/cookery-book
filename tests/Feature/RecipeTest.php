@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Recipe;
 use App\Models\User;
-use Database\Seeders\RecipeSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -19,7 +18,7 @@ class RecipeTest extends TestCase
      */
     public function test_can_get_recipes_list(): void
     {
-        $this->seed(RecipeSeeder::class);
+        $this->seed();
 
         $user = User::factory()->create();
 
@@ -62,15 +61,14 @@ class RecipeTest extends TestCase
      */
     public function test_should_store_a_recipe(): void
     {
-        $this->seed(RecipeSeeder::class);
-
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)->post('/recipes', [
-            'title' => 'Recipe Title 2',
-            'description' => 'Recipe Description 2',
-            'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReYV3X0-3r-Rn84_67PNk4hz3_EYuR-rlqY3WUAM9TJKptoTm1KTbIHo8kZahiCtMsYOI&usqp=CAU'
-        ]);
+                'title' => 'Recipe Title 2',
+                'description' => 'Recipe Description 2',
+                'image' => 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReYV3X0-3r-Rn84_67PNk4hz3_EYuR-rlqY3WUAM9TJKptoTm1KTbIHo8kZahiCtMsYOI&usqp=CAU',
+                'instructions' => 'Recipe Instructions 2',
+            ]);
 
         $this->assertDatabaseHas('recipes', [
             'title' => 'Recipe Title 2',
@@ -85,8 +83,6 @@ class RecipeTest extends TestCase
      */
     public function test_example(): void
     {
-        $this->seed(RecipeSeeder::class);
-
         $user = User::factory()->create();
         $recipe = Recipe::inRandomOrder()->first();
 
@@ -95,5 +91,19 @@ class RecipeTest extends TestCase
         $response->assertSee($recipe->title);
         $response->assertSee($recipe->description);
         $response->assertStatus(200);
+    }
+
+    /**
+     * @test
+     * @group Feature/Recipe
+     * @return void
+     */
+    public function test_can_search_recipes(): void
+    {
+        $user = User::factory()->create();
+
+        $response = $this->actingAs($user)->get('/recipes');
+
+        $response->assertSee('Search');
     }
 }

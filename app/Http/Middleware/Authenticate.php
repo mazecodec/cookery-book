@@ -5,6 +5,9 @@ namespace App\Http\Middleware;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 use Illuminate\Http\Request;
 
+/**
+ * https://laravel-news.com/laravel-security-middleware
+ */
 class Authenticate extends Middleware
 {
     /**

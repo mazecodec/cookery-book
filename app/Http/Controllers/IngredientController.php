@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Ingredient;
+use Illuminate\Contracts\View\View;
 
 class IngredientController extends Controller
 {
-    //
+    public function index(): View
+    {
+        return view('ingredients.index', [
+            'ingredients' => Ingredient::all(),
+        ]);
+    }
 }

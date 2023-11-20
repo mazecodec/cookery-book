@@ -48,4 +48,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Recipe::class);
     }
+
+    public function isAdmin(): bool
+    {
+        // TODO: Implement isAdmin() method.
+        return false;
+    }
 }

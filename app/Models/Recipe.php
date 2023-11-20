@@ -2,18 +2,33 @@
 
 namespace App\Models;
 
+use Abbasudo\Purity\Traits\Filterable;
+use Abbasudo\Purity\Traits\Sortable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Recipe extends Model
 {
-    use HasFactory;
+    use HasFactory, Filterable, Sortable;
 
     protected $fillable = [
         'title',
         'description',
         'image',
+        'instructions'
+    ];
+
+    protected $filterFields = [
+        'title',
+        'description',
+        'instructions',
+    ];
+
+    protected $sortFields = [
+        'title',
+        'description',
+        'created_at'
     ];
 
     public function user(): BelongsTo
