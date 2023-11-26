@@ -8,4 +8,29 @@ use Illuminate\Database\Eloquent\Model;
 class Ingredient extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'emoji',
+        'image',
+    ];
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
+
+    protected $guarded = [
+//        'id'
+    ];
+
+    protected $casts = [
+        'name' => 'string',
+        'emoji' => 'string',
+        'image' => 'string',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime'
+    ];
 }

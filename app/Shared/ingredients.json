@@ -1,0 +1,809 @@
+{
+  "ingredients": [
+    {
+      "english": "Olive oil",
+      "spanish": "Aceite de oliva",
+      "emoticon": "🫒"
+    },
+    {
+      "english": "Onion",
+      "spanish": "Cebolla",
+      "emoticon": "🧅"
+    },
+    {
+      "english": "Garlic",
+      "spanish": "Ajo",
+      "emoticon": "🧄"
+    },
+    {
+      "english": "Tomatoes",
+      "spanish": "Tomates",
+      "emoticon": "🍅"
+    },
+    {
+      "english": "Salt",
+      "spanish": "Sal",
+      "emoticon": "🧂"
+    },
+    {
+      "english": "Pepper",
+      "spanish": "Pimienta",
+      "emoticon": "🌶️"
+    },
+    {
+      "english": "Chicken",
+      "spanish": "Pollo",
+      "emoticon": "🐔"
+    },
+    {
+      "english": "Beef",
+      "spanish": "Carne de res",
+      "emoticon": "🥩"
+    },
+    {
+      "english": "Pork",
+      "spanish": "Cerdo",
+      "emoticon": "🐖"
+    },
+    {
+      "english": "Fish",
+      "spanish": "Pescado",
+      "emoticon": "🐟"
+    },
+    {
+      "english": "Rice",
+      "spanish": "Arroz",
+      "emoticon": "🍚"
+    },
+    {
+      "english": "Pasta",
+      "spanish": "Pasta",
+      "emoticon": "🍝"
+    },
+    {
+      "english": "Potatoes",
+      "spanish": "Patatas",
+      "emoticon": "🥔"
+    },
+    {
+      "english": "Carrots",
+      "spanish": "Zanahorias",
+      "emoticon": "🥕"
+    },
+    {
+      "english": "Bell peppers",
+      "spanish": "Pimientos",
+      "emoticon": "🫑"
+    },
+    {
+      "english": "Broccoli",
+      "spanish": "Brócoli",
+      "emoticon": "🥦"
+    },
+    {
+      "english": "Spinach",
+      "spanish": "Espinacas",
+      "emoticon": "🍃"
+    },
+    {
+      "english": "Mushrooms",
+      "spanish": "Champiñones",
+      "emoticon": "🍄"
+    },
+    {
+      "english": "Eggs",
+      "spanish": "Huevos",
+      "emoticon": "🍳"
+    },
+    {
+      "english": "Milk",
+      "spanish": "Leche",
+      "emoticon": "🥛"
+    },
+    {
+      "english": "Butter",
+      "spanish": "Mantequilla",
+      "emoticon": "🧈"
+    },
+    {
+      "english": "Flour",
+      "spanish": "Harina",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Sugar",
+      "spanish": "Azúcar",
+      "emoticon": "🍬"
+    },
+    {
+      "english": "Salt",
+      "spanish": "Sal",
+      "emoticon": "🧂"
+    },
+    {
+      "english": "Baking powder",
+      "spanish": "Levadura en polvo",
+      "emoticon": "🍰"
+    },
+    {
+      "english": "Baking soda",
+      "spanish": "Bicarbonato de sodio",
+      "emoticon": "🥤"
+    },
+    {
+      "english": "Vanilla extract",
+      "spanish": "Extracto de vainilla",
+      "emoticon": "🌰"
+    },
+    {
+      "english": "Cinnamon",
+      "spanish": "Canela",
+      "emoticon": "🍪"
+    },
+    {
+      "english": "Cumin",
+      "spanish": "Comino",
+      "emoticon": "🌿"
+    },
+    {
+      "english": "Paprika",
+      "spanish": "Pimentón",
+      "emoticon": "🌶️"
+    },
+    {
+      "english": "Oregano",
+      "spanish": "Orégano",
+      "emoticon": "🍕"
+    },
+    {
+      "english": "Basil",
+      "spanish": "Albahaca",
+      "emoticon": "🌿"
+    },
+    {
+      "english": "Thyme",
+      "spanish": "Tomillo",
+      "emoticon": "🌿"
+    },
+    {
+      "english": "Rosemary",
+      "spanish": "Romero",
+      "emoticon": "🌿"
+    },
+    {
+      "english": "Soy sauce",
+      "spanish": "Salsa de soja",
+      "emoticon": "🥢"
+    },
+    {
+      "english": "Honey",
+      "spanish": "Miel",
+      "emoticon": "🍯"
+    },
+    {
+      "english": "Lemon",
+      "spanish": "Limón",
+      "emoticon": "🍋"
+    },
+    {
+      "english": "Lime",
+      "spanish": "Limón verde",
+      "emoticon": "🍈"
+    },
+    {
+      "english": "Ginger",
+      "spanish": "Jengibre",
+      "emoticon": "🧡"
+    },
+    {
+      "english": "Garlic powder",
+      "spanish": "Ajo en polvo",
+      "emoticon": "🧄"
+    },
+    {
+      "english": "Onion powder",
+      "spanish": "Cebolla en polvo",
+      "emoticon": "🧅"
+    },
+    {
+      "english": "Dijon mustard",
+      "spanish": "Mostaza de Dijon",
+      "emoticon": "🍯"
+    },
+    {
+      "english": "Mayonnaise",
+      "spanish": "Mayonesa",
+      "emoticon": "🥪"
+    },
+    {
+      "english": "Ketchup",
+      "spanish": "Ketchup",
+      "emoticon": "🍅"
+    },
+    {
+      "english": "Worcestershire sauce",
+      "spanish": "Salsa Worcestershire",
+      "emoticon": "🍹"
+    },
+    {
+      "english": "Vinegar",
+      "spanish": "Vinagre",
+      "emoticon": "🍶"
+    },
+    {
+      "english": "Parmesan cheese",
+      "spanish": "Queso parmesano",
+      "emoticon": "🧀"
+    },
+    {
+      "english": "Cheddar cheese",
+      "spanish": "Queso cheddar",
+      "emoticon": "🧀"
+    },
+    {
+      "english": "Mozzarella cheese",
+      "spanish": "Queso mozzarella",
+      "emoticon": "🧀"
+    },
+    {
+      "english": "Feta cheese",
+      "spanish": "Queso feta",
+      "emoticon": "🧀"
+    },
+    {
+      "english": "Bread crumbs",
+      "spanish": "Pan rallado",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Sour cream",
+      "spanish": "Crema agria",
+      "emoticon": "🥛"
+    },
+    {
+      "english": "Yogurt",
+      "spanish": "Yogur",
+      "emoticon": "🥛"
+    },
+    {
+      "english": "Cream cheese",
+      "spanish": "Queso crema",
+      "emoticon": "🧀"
+    },
+    {
+      "english": "Chives",
+      "spanish": "Cebollino",
+      "emoticon": "🌿"
+    },
+    {
+      "english": "Parsley",
+      "spanish": "Perejil",
+      "emoticon": "🌿"
+    },
+    {
+      "english": "Dill",
+      "spanish": "Eneldo",
+      "emoticon": "🌿"
+    },
+    {
+      "english": "Cilantro",
+      "spanish": "Cilantro",
+      "emoticon": "🌿"
+    },
+    {
+      "english": "Lettuce",
+      "spanish": "Lechuga",
+      "emoticon": "🥬"
+    },
+    {
+      "english": "Avocado",
+      "spanish": "Aguacate",
+      "emoticon": "🥑"
+    },
+    {
+      "english": "Cucumber",
+      "spanish": "Pepino",
+      "emoticon": "🥒"
+    },
+    {
+      "english": "Radishes",
+      "spanish": "Rábanos",
+      "emoticon": "🥦"
+    },
+    {
+      "english": "Red onion",
+      "spanish": "Cebolla morada",
+      "emoticon": "🧅"
+    },
+    {
+      "english": "Green onions",
+      "spanish": "Cebollas verdes",
+      "emoticon": "🧅"
+    },
+    {
+      "english": "Tomato sauce",
+      "spanish": "Salsa de tomate",
+      "emoticon": "🍅"
+    },
+    {
+      "english": "Tomato paste",
+      "spanish": "Puré de tomate",
+      "emoticon": "🍅"
+    },
+    {
+      "english": "Canned tomatoes",
+      "spanish": "Tomates enlatados",
+      "emoticon": "🍅"
+    },
+    {
+      "english": "Coconut milk",
+      "spanish": "Leche de coco",
+      "emoticon": "🥥"
+    },
+    {
+      "english": "Coconut cream",
+      "spanish": "Crema de coco",
+      "emoticon": "🥥"
+    },
+    {
+      "english": "Curry powder",
+      "spanish": "Curry en polvo",
+      "emoticon": "🍛"
+    },
+    {
+      "english": "Turmeric",
+      "spanish": "Cúrcuma",
+      "emoticon": "🌞"
+    },
+    {
+      "english": "Coriander",
+      "spanish": "Cilantro",
+      "emoticon": "🌿"
+    },
+    {
+      "english": "Cayenne pepper",
+      "spanish": "Pimienta de cayena",
+      "emoticon": "🌶️"
+    },
+    {
+      "english": "Black beans",
+      "spanish": "Frijoles negros",
+      "emoticon": "🍲"
+    },
+    {
+      "english": "Kidney beans",
+      "spanish": "Frijoles rojos",
+      "emoticon": "🍲"
+    },
+    {
+      "english": "Chickpeas",
+      "spanish": "Garbanzos",
+      "emoticon": "🍲"
+    },
+    {
+      "english": "Lentils",
+      "spanish": "Lentejas",
+      "emoticon": "🍲"
+    },
+    {
+      "english": "Quinoa",
+      "spanish": "Quinoa",
+      "emoticon": "🍲"
+    },
+    {
+      "english": "Couscous",
+      "spanish": "Cuscús",
+      "emoticon": "🍚"
+    },
+    {
+      "english": "Farro",
+      "spanish": "Farro",
+      "emoticon": "🍲"
+    },
+    {
+      "english": "Barley",
+      "spanish": "Cebada",
+      "emoticon": "🍲"
+    },
+    {
+      "english": "Brown rice",
+      "spanish": "Arroz integral",
+      "emoticon": "🍚"
+    },
+    {
+      "english": "White rice",
+      "spanish": "Arroz blanco",
+      "emoticon": "🍚"
+    },
+    {
+      "english": "Wild rice",
+      "spanish": "Arroz salvaje",
+      "emoticon": "🍚"
+    },
+    {
+      "english": "Balsamic vinegar",
+      "spanish": "Vinagre balsámico",
+      "emoticon": "🍶"
+    },
+    {
+      "english": "Red wine vinegar",
+      "spanish": "Vinagre de vino tinto",
+      "emoticon": "🍷"
+    },
+    {
+      "english": "White wine vinegar",
+      "spanish": "Vinagre de vino blanco",
+      "emoticon": "🍷"
+    },
+    {
+      "english": "Apple cider vinegar",
+      "spanish": "Vinagre de sidra de manzana",
+      "emoticon": "🍏"
+    },
+    {
+      "english": "Dijon mustard",
+      "spanish": "Mostaza de Dijon",
+      "emoticon": "🍯"
+    },
+    {
+      "english": "Whole grain mustard",
+      "spanish": "Mostaza de grano entero",
+      "emoticon": "🍯"
+    },
+    {
+      "english": "Grainy mustard",
+      "spanish": "Mostaza granulada",
+      "emoticon": "🍯"
+    },
+    {
+      "english": "Soy milk",
+      "spanish": "Leche de soja",
+      "emoticon": "🥛"
+    },
+    {
+      "english": "Almond milk",
+      "spanish": "Leche de almendra",
+      "emoticon": "😊"
+    },
+    {
+      "english": "Cashew milk",
+      "spanish": "Leche de anacardo",
+      "emoticon": "😊"
+    },
+    {
+      "english": "Raisins",
+      "spanish": "Uvas pasas",
+      "emoticon": "🍇"
+    },
+    {
+      "english": "Dried cranberries",
+      "spanish": "Arándanos secos",
+      "emoticon": "🍒"
+    },
+    {
+      "english": "Dried apricots",
+      "spanish": "Dátiles secos",
+      "emoticon": "🍑"
+    },
+    {
+      "english": "Walnuts",
+      "spanish": "Nueces",
+      "emoticon": "🥜"
+    },
+    {
+      "english": "Almonds",
+      "spanish": "Almendras",
+      "emoticon": "🌰"
+    },
+    {
+      "english": "Pecans",
+      "spanish": "Nueces pecanas",
+      "emoticon": "🥜"
+    },
+    {
+      "english": "Cashews",
+      "spanish": "Anacardos",
+      "emoticon": "😊"
+    },
+    {
+      "english": "Pine nuts",
+      "spanish": "Piñones",
+      "emoticon": "🌰"
+    },
+    {
+      "english": "Sunflower seeds",
+      "spanish": "Semillas de girasol",
+      "emoticon": "🌻"
+    },
+    {
+      "english": "Pumpkin seeds",
+      "spanish": "Semillas de calabaza",
+      "emoticon": "🎃"
+    },
+    {
+      "english": "Chia seeds",
+      "spanish": "Semillas de chía",
+      "emoticon": "🌱"
+    },
+    {
+      "english": "Flax seeds",
+      "spanish": "Semillas de lino",
+      "emoticon": "🌱"
+    },
+    {
+      "english": "Sesame seeds",
+      "spanish": "Semillas de sésamo",
+      "emoticon": "🍴"
+    },
+    {
+      "english": "Peanuts",
+      "spanish": "Cacahuetes",
+      "emoticon": "🥜"
+    },
+    {
+      "english": "Hummus",
+      "spanish": "Hummus",
+      "emoticon": "🍴"
+    },
+    {
+      "english": "Tahini",
+      "spanish": "Tahini",
+      "emoticon": "🍴"
+    },
+    {
+      "english": "Pita bread",
+      "spanish": "Pan de pita",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Naan bread",
+      "spanish": "Pan naan",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Tortillas",
+      "spanish": "Tortillas",
+      "emoticon": "🌮"
+    },
+    {
+      "english": "Baguette",
+      "spanish": "Baguette",
+      "emoticon": "🥖"
+    },
+    {
+      "english": "Ciabatta",
+      "spanish": "Ciabatta",
+      "emoticon": "🥖"
+    },
+    {
+      "english": "Focaccia",
+      "spanish": "Focaccia",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Sourdough bread",
+      "spanish": "Pan de masa madre",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Multigrain bread",
+      "spanish": "Pan integral",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Whole wheat bread",
+      "spanish": "Pan de trigo integral",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Rye bread",
+      "spanish": "Pan de centeno",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Bagels",
+      "spanish": "Bagels",
+      "emoticon": "🍩"
+    },
+    {
+      "english": "English muffins",
+      "spanish": "Muffins ingleses",
+      "emoticon": "🧁"
+    },
+    {
+      "english": "Tortillas",
+      "spanish": "Tortillas",
+      "emoticon": "🌮"
+    },
+    {
+      "english": "Flatbreads",
+      "spanish": "Pan plano",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Crackers",
+      "spanish": "Galletas saladas",
+      "emoticon": "🍪"
+    },
+    {
+      "english": "Whole grain crackers",
+      "spanish": "Galletas integrales",
+      "emoticon": "🍪"
+    },
+    {
+      "english": "Rice cakes",
+      "spanish": "Tortas de arroz",
+      "emoticon": "🍚"
+    },
+    {
+      "english": "Popcorn",
+      "spanish": "Palomitas de maíz",
+      "emoticon": "🍿"
+    },
+    {
+      "english": "Crostini",
+      "spanish": "Crostini",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Bruschetta",
+      "spanish": "Bruschetta",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Melba toast",
+      "spanish": "Tostadas Melba",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Garlic bread",
+      "spanish": "Pan de ajo",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Croutons",
+      "spanish": "Picatostes",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Focaccia bread",
+      "spanish": "Pan de focaccia",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Herb-infused bread",
+      "spanish": "Pan con hierbas",
+      "emoticon": "🍞"
+    },
+    {
+      "english": "Fruit-infused water",
+      "spanish": "Agua con frutas",
+      "emoticon": "🍹"
+    },
+    {
+      "english": "Herbal tea",
+      "spanish": "Té de hierbas",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Green tea",
+      "spanish": "Té verde",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Black tea",
+      "spanish": "Té negro",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Oolong tea",
+      "spanish": "Té oolong",
+      "emoticon": "☕"
+    },
+    {
+      "english": "White tea",
+      "spanish": "Té blanco",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Chamomile tea",
+      "spanish": "Té de manzanilla",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Peppermint tea",
+      "spanish": "Té de menta",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Lemon balm tea",
+      "spanish": "Té de melisa",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Hibiscus tea",
+      "spanish": "Té de hibisco",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Rooibos tea",
+      "spanish": "Té rooibos",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Ginger tea",
+      "spanish": "Té de jengibre",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Turmeric tea",
+      "spanish": "Té de cúrcuma",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Matcha latte",
+      "spanish": "Matcha latte",
+      "emoticon": "🍵"
+    },
+    {
+      "english": "Golden milk latte",
+      "spanish": "Latte de leche dorada",
+      "emoticon": "🍵"
+    },
+    {
+      "english": "Chai latte",
+      "spanish": "Chai latte",
+      "emoticon": "🍵"
+    },
+    {
+      "english": "Espresso",
+      "spanish": "Espresso",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Americano",
+      "spanish": "Americano",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Latte",
+      "spanish": "Latte",
+      "emoticon": "🍵"
+    },
+    {
+      "english": "Cappuccino",
+      "spanish": "Cappuccino",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Macchiato",
+      "spanish": "Macchiato",
+      "emoticon": "☕"
+    },
+    {
+      "english": "Mocha",
+      "spanish": "Mocha",
+      "emoticon": "🍫☕"
+    },
+    {
+      "english": "Affogato",
+      "spanish": "Affogato",
+      "emoticon": "🍨☕"
+    },
+    {
+      "english": "Cold brew",
+      "spanish": "Cold brew",
+      "emoticon": "☕❄️"
+    },
+    {
+      "english": "Iced tea",
+      "spanish": "Té helado",
+      "emoticon": "🍹❄️"
+    },
+    {
+      "english": "Iced coffee",
+      "spanish": "Café helado",
+      "emoticon": "☕❄️"
+    }
+  ]
+}

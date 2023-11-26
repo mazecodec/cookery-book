@@ -18,23 +18,23 @@ class StoreRecipeRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array|string>
      */
     public function rules(): array
     {
-        if(is_numeric($this->image)) {
+        if (is_numeric($this->image)) {
             $validation = 'digit';
         } else if (!filter_var($this->image, FILTER_VALIDATE_URL) === false) {
             $validation = 'url';
         } else {
-            $validation = 'file';
+            $validation = 'file|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
         }
 
         return [
             'title' => 'required|max:160',
             'description' => 'required|max:255',
             'instructions' => 'required|max:10000',
-            'image' => "required|{$validation}",// 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => "required|{$validation}",
             'preparation_time' => 'integer',
             'difficulty_level' => 'string',
             'other_details' => 'string'
