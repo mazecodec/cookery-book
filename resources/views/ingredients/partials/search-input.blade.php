@@ -1,0 +1,13 @@
+<x-text-input type="search"
+              name="q"
+              :value="request('q')"
+              hx-get="{{ route('ingredients.index') }}"
+              hx-target="#ingredients-table-container"
+              hx-swap='innerHTML'
+              hx-replace-url='false'
+              hx-trigger="keyup changed delay:500ms, search"
+              placeholder="Search ingredients..."
+              aria-label="Search ingredients"
+              minlength="1"
+              maxlength="10"
+              pattern="[A-z]{1-10}"/>

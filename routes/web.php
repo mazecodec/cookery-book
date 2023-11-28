@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Ingredient\CreateIngredientController;
 use App\Http\Controllers\Ingredient\DeleteIngredientController;
+use App\Http\Controllers\Ingredient\EditIngredientController;
+use App\Http\Controllers\Ingredient\FilterFinderIngredientController;
 use App\Http\Controllers\Ingredient\ShowListIngredientsController;
 use App\Http\Controllers\Ingredient\UpdateIngredientController;
 use App\Http\Controllers\ProfileController;
@@ -45,8 +47,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('ingredients', ShowListIngredientsController::class)->name('ingredients.index');
     Route::post('ingredients', CreateIngredientController::class)->name('ingredients.store');
+    Route::get('ingredients/{ingredient}/edit', EditIngredientController::class)->name('ingredients.edit');
     Route::put('ingredients/{ingredient}', UpdateIngredientController::class)->name('ingredients.update');
-    Route::delete('ingredients/{recipe}', DeleteIngredientController::class)->name('ingredients.destroy');
+    Route::delete('ingredients/{ingredient}', DeleteIngredientController::class)->name('ingredients.destroy');
+    Route::get('ingredients/finder', FilterFinderIngredientController::class)->name('ingredients.finder');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

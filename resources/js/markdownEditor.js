@@ -3,6 +3,7 @@ import '@toast-ui/editor/dist/toastui-editor.css';
 
 function EditorMarkdown(querySelector = 'div#editor') {
   const inputEditor = document.querySelector(querySelector);
+    console.log(inputEditor)
   let editor = null;
 
   if (inputEditor) {
@@ -12,19 +13,21 @@ function EditorMarkdown(querySelector = 'div#editor') {
       initialEditType: 'markdown',
       placeholder: 'Write down your recipe steps!',
     })
+
+    editor.on('change', handlerChange)
   }
 
   return editor;
 }
 
-const editorMarkdown = EditorMarkdown();
+let editorMarkdown = EditorMarkdown();
 
-editorMarkdown?.on('change', (e) => {
-  const content = document.getElementById('editor-markdown');
-  if(content) {
-    content.value  = editorMarkdown.getMarkdown()
-  }
-})
+function handlerChange (e) {
+    const content = document.getElementById('editor-markdown');
+    if(content) {
+        content.value  = editorMarkdown.getMarkdown()
+    }
+}
 
 document.addEventListener('alpine:init', () => {
   Alpine.store('editor', {
@@ -40,3 +43,7 @@ document.addEventListener('alpine:init', () => {
     }
   });
 });
+
+window.htmx?.on('htmx:afterRequest', (evt) => {
+    editorMarkdown = EditorMarkdown();
+})

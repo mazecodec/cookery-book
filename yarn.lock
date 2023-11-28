@@ -496,6 +496,11 @@ hasown@^2.0.0:
   dependencies:
     function-bind "^1.1.2"
 
+htmx.org@^1.9.9:
+  version "1.9.9"
+  resolved "https://registry.yarnpkg.com/htmx.org/-/htmx.org-1.9.9.tgz#e9f94cb3e39ab249430244dc9ae168b47d610920"
+  integrity sha512-PDEZU1me7UGLzQk98LyfLvwFgdtn9mrCVMmAxv1/UjshUnxsc+rouu+Ot2QfFZxsY4mBCoOed5nK7m9Nj2Tu7g==
+
 inflight@^1.0.4:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/inflight/-/inflight-1.0.6.tgz#49bd6331d7d02d0c09bc910a1075ba8165b56df9"

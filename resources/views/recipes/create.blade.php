@@ -1,15 +1,22 @@
 @php use Illuminate\Support\Str; @endphp
-
 @vite(["resources/js/autoloadFiles.js"])
 @vite(["resources/js/markdownEditor.js"])
+@vite(["resources/js/preloadImageViewer.js"])
 
 <x-app-layout>
+
     <x-container>
         <x-card class="p-9">
             <form method="POST"
                   id="recipe-form"
                   action="{{ route('recipes.store') }}"
                   enctype="multipart/form-data"
+                  hx-post="{{ route('recipes.store') }}"
+                  hx-encoding="multipart/form-data"
+                  hx-target="body"
+                  hx-swap="innerHTML"
+                  hx-indicator="#loading"
+                  hx-trigger="submit delay:500ms"
                   class="flex flex-col gap-2">
                 @csrf
                 <div class="flex flex-col">
@@ -41,14 +48,14 @@
                         <x-label for="editor" class="text-gray-600 font-semibold">Instructions
                         </x-label>
                         <div id="editor"
-                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
-                            {!! Str::markdown(old('instructions')) !!}
+                             class="mt-1 block w-full rounded-md border-gray-300 shadow-sm h-80">
+                            {!! Str::markdown(old('instructions') ?? '') !!}
                         </div>
                         @error('instructions')
                         <x-error-message class="alert alert-danger">{{ $message }}</x-error-message>
                         @enderror
                         <input type="hidden" name="instructions" id="editor-markdown"
-                               value="{!! old('instructions') !!}"/>
+                               value="{!! old('instructions') ?? '' !!}"/>
                     </div>
                 </div>
                 <div class="flex flex-col justify-between items-start overflow-hidden">
@@ -77,20 +84,8 @@
     </x-container>
 
     @push('script')
-        <script>
-            const image = document.querySelector('input[type="file"]#image');
-
-            image.onchange = evt => {
-                const preview = document.getElementById('preview');
-                preview.style.display = 'block';
-
-                const [file] = image.files
-
-                if (file) {
-                    preview.src = URL.createObjectURL(file)
-                }
-            }
-        </script>
+       <script>
+       </script>
     @endpush
 </x-app-layout>
 

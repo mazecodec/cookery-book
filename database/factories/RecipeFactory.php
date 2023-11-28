@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Recipe;
 use App\Models\User;
+use App\Shared\Enums\DifficultyLevel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -11,24 +12,20 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class RecipeFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
             'title' => fake()->sentence(),
             'description' => fake()->paragraph(),
-            'image' =>
-                fake()->randomElement([
+            'image' => fake()->randomElement([
                 fake()->imageUrl(),
-                fake()->image('public/storage/images',400,300, null, false),
+                fake()->image('public/storage/images', 400, 300, null, false),
             ]),
             'instructions' => fake()->paragraph(),
-            'difficulty_level' => fake()->randomElement(['easy', 'medium', 'hard']),
-            'preparation_time' =>  fake()->randomElement([fake()->numberBetween(1, 100)]),
+            'difficulty_level' => fake()->randomElement(
+                [DifficultyLevel::EASY, DifficultyLevel::MEDIUM, DifficultyLevel::HARD]
+            ),
+            'preparation_time' => fake()->randomElement([fake()->numberBetween(1, 200)]),
             'other_details' => fake()->randomElement([fake()->paragraph()]),
             'user_id' => User::inRandomOrder()->first(),
         ];

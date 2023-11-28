@@ -31,9 +31,9 @@ class StoreRecipeRequest extends FormRequest
         }
 
         return [
-            'title' => 'required|max:160',
-            'description' => 'required|max:255',
-            'instructions' => 'required|max:10000',
+            'title' => 'required|string|max:160',
+            'description' => 'required|string|max:255',
+            'instructions' => 'required|string|max:10000',
             'image' => "required|{$validation}",
             'preparation_time' => 'integer',
             'difficulty_level' => 'string',

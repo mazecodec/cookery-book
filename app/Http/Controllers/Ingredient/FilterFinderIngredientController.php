@@ -4,22 +4,29 @@ namespace App\Http\Controllers\Ingredient;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ingredient;
+use App\Services\Ingredients\PaginateIngredients;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class FilterFinderIngredientController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, PaginateIngredients $ingredients): string
     {
-        $ingredients = [];
+        $filterIngredients = Collection::empty();
 
-        if($request->has('filter')) {
-            $ingredients = Ingredient::where('name', 'like', '%' . $request->filter . '%')->get();
+        if ($request->has('name')) {
+            $name = trim(strtolower($request->name));
+            $filterIngredients = Ingredient::whereRaw('LOWER(name) LIKE ?', ['%' . $name . '%'])->limit(10)->get();
         }
 
-        return response()->view('ingredients.index', [
-            'filter_ingredients' => $ingredients
-        ])
-        ->with('message', 'Ingredient filter successfully!')
-        ->fragment('ingredients');
+        if ($request->header('hx-request')
+            && $request->header('hx-target') == 'table-container') {
+            return view('ingredients.partials.table-body', compact('ingredients'));
+        }
+
+        return view('ingredients.index', [
+            'ingredients' => $ingredients->setRequest($request)->list(),
+            'filterIngredients' => $filterIngredients
+        ])->fragment('filter_ingredients');
     }
 }

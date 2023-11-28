@@ -13,6 +13,7 @@ class DeleteRecipeController extends Controller
      */
     public function __invoke(Recipe $recipe): RedirectResponse
     {
+        $recipe->ingredients()->detach();
         $recipe->delete();
 
         return back()->with('message', 'Recipe deleted successfully!');

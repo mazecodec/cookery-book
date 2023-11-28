@@ -10,4 +10,19 @@
     .is-invalid {
         @apply border-b-2 border-b-red-500 !important;
     }
+
+    .htmx-indicator {
+        @apply hidden opacity-0 absolute top-0 left-0
+        flex items-center justify-center
+        h-screen w-screen
+        bg-gray-200 bg-opacity-40
+        z-[99999]
+        cursor-wait;
+    }
+
+    .htmx-request.htmx-indicator,
+    .htmx-request .htmx-indicator
+    {
+        @apply flex opacity-100;
+    }
 }
