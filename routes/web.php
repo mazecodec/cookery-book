@@ -5,6 +5,7 @@ use App\Http\Controllers\Ingredient\DeleteIngredientController;
 use App\Http\Controllers\Ingredient\EditIngredientController;
 use App\Http\Controllers\Ingredient\FilterFinderIngredientController;
 use App\Http\Controllers\Ingredient\ShowListIngredientsController;
+use App\Http\Controllers\Ingredient\StoreIngredientController;
 use App\Http\Controllers\Ingredient\UpdateIngredientController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Recipe\CreateRecipeController;
@@ -46,7 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('recipes/{recipe}/edit', EditRecipeViewController::class)->name('recipes.edit');
 
     Route::get('ingredients', ShowListIngredientsController::class)->name('ingredients.index');
-    Route::post('ingredients', CreateIngredientController::class)->name('ingredients.store');
+    Route::get('ingredients/create', CreateIngredientController::class)->name('ingredients.create');
+    Route::post('ingredients', StoreIngredientController::class)->name('ingredients.store');
     Route::get('ingredients/{ingredient}/edit', EditIngredientController::class)->name('ingredients.edit');
     Route::put('ingredients/{ingredient}', UpdateIngredientController::class)->name('ingredients.update');
     Route::delete('ingredients/{ingredient}', DeleteIngredientController::class)->name('ingredients.destroy');

@@ -1,23 +1,21 @@
 @php use Illuminate\Support\Str; @endphp
 <x-app-layout>
-    <x-slot name="header">
-        <div class="flex justify-between items-center" x-data>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                {{ __('Recipes') }}
-            </h2>
+    <x-slot name="header" x-data>
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Recipes') }}
+        </h2>
 
-            @can('update', $recipe)
-                <x-primary-button type="button"
-                                  @click="window.location='{{ route('recipes.edit', $recipe) }}'">
-                    {{ __('Edit') }}
-                </x-primary-button>
-            @endcan
-        </div>
+        @can('update', $recipe)
+            <x-primary-button type="button"
+                              @click="window.location='{{ route('recipes.edit', $recipe) }}'">
+                {{ __('Edit') }}
+            </x-primary-button>
+        @endcan
     </x-slot>
 
     <x-container>
-        <x-card>
-            <x-slot name="header" :image="$recipe->image" ></x-slot>
+        <x-card class="shadow">
+            <x-slot name="header" :image="$recipe->image"></x-slot>
 
             <x-slot name="body">
                 <div class="flex w-full">
@@ -29,16 +27,20 @@
                             {!! Str::markdown($recipe->instructions ?? '...') !!}
                         </article>
                     </div>
-                    @if(isset($recipe->ingredients))
-                        <div class="flex-auto w-1/4 bg-gray-500">
-                            <ul>
-                                @foreach($recipe->ingredients as $ingredient)
-                                    {{ $recipe->ingredients }}
-                                    <li>{{ $ingredient->name }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+
+                    @fragment('recipe-ingredients')
+                        @if(isset($recipe->ingredients) && $recipe->ingredients->isNotEmpty())
+                            @dump($recipe->ingredients)
+                            <div class="flex-auto w-1/4 bg-gray-500">
+                                <ul>
+                                    @foreach($recipe->ingredients as $ingredient)
+                                        {{ $recipe->ingredients }}
+                                        <li>{{ $ingredient->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    @endfragment
                 </div>
             </x-slot>
 

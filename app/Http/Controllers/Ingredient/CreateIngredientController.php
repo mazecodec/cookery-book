@@ -7,19 +7,13 @@ use App\Http\Requests\StoreIngredientRequest;
 use App\Models\Ingredient;
 use App\Services\Ingredients\PaginateIngredients;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class CreateIngredientController extends Controller
 {
-    public function __invoke(
-        StoreIngredientRequest $request,
-        PaginateIngredients $ingredients): RedirectResponse
-    {
-        $data = $request->validated();
-        $ingredient = Ingredient::create($data);
 
-        return redirect()->route('ingredients.index')->with(
-                'success',
-                __('Ingredient :name has been created', ['name' => $ingredient->name])
-            );
+    public function __invoke(): View
+    {
+        return view('ingredients.create');
     }
 }

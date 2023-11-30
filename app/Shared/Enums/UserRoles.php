@@ -3,11 +3,12 @@
 namespace App\Shared\Enums;
 
 use App\Shared\Enums\Attributes\Description;
+use App\Shared\Traits\AttributesToArray;
 use App\Shared\Traits\GetsAttributes;
 
 enum UserRoles: string
 {
-    use GetsAttributes;
+    use GetsAttributes, AttributesToArray;
 
     #[Description('Administrator')]
     case Admin = 'admin';
@@ -17,27 +18,8 @@ enum UserRoles: string
 
     #[Description('Support team')]
     case Support = 'support';
+
+    #[Description('Basic role')]
     case Basic = 'basic';
 
-    /**
-     * <select name="roles">
-     *  <foreach(UserRoles::asSelectArray() as $role)>
-     *      <option value="{{ $role->value }}">{{ $role->name }}</option>
-     *  </endforeach>
-     * </select>
-     * @return array<string,string>
-     */
-    public static function asSelectArray(): array
-    {
-        /** @var array<string,string> $values */
-        $values = collect(self::cases())
-            ->map(function ($enum) {
-                return [
-                    'name' => self::getDescription($enum),
-                    'value' => $enum->value,
-                ];
-            })->toArray();
-
-        return $values;
-    }
 }

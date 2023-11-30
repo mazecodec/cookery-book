@@ -7,6 +7,16 @@
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
+"@alpinejs/mask@^3.13.3":
+  version "3.13.3"
+  resolved "https://registry.yarnpkg.com/@alpinejs/mask/-/mask-3.13.3.tgz#34f75f9aa9b94f7faf5ef2c6c52f877cd1aa9279"
+  integrity sha512-ZegBXNPAggvcIXqaA8H7j4b1IgLS2cQSsYfpvPk0y35zi0uhbDBLzZD6K/X70XOnPpfTE+iSWnWK507dNOIHLg==
+
+"@alpinejs/morph@^3.12.0", "@alpinejs/morph@^3.13.3":
+  version "3.13.3"
+  resolved "https://registry.yarnpkg.com/@alpinejs/morph/-/morph-3.13.3.tgz#0a212a54ca6dba609b698fcc2b2c6e0e9a134529"
+  integrity sha512-JYDqmN/2mV4x3UnmUaZv2VDxvuPNjEAd1nxcKoMhPFWAACS6b+Z51fEf8o97Be9Hqr9bgTxtJDP5GjKWbILXYA==
+
 "@esbuild/android-arm64@0.18.20":
   version "0.18.20"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.18.20.tgz#984b4f9c8d0377443cc2dfcef266d02244593622"
@@ -116,6 +126,13 @@
   version "0.18.20"
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.18.20.tgz#786c5f41f043b07afb1af37683d7c33668858f6d"
   integrity sha512-kTdfRcSiDfQca/y9QIkng02avJ+NCaQvrMejlsB3RRv5sE9rRoeBPISaZpKxHELzRxZyLvNts1P27W3wV+8geQ==
+
+"@imacrayon/alpine-ajax@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@imacrayon/alpine-ajax/-/alpine-ajax-0.4.0.tgz#6da0da1631a422d0dca377c7bf0f95213d3404a4"
+  integrity sha512-Kv3VC0UfoW3xu+nwXunSM+jbHWwqCa/9HqwXAWX/GRM/EoVlKXbUj8Vd0uTywjp6upY7szAISvGDGORSeXjYCw==
+  dependencies:
+    "@alpinejs/morph" "^3.12.0"
 
 "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"

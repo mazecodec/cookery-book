@@ -9,7 +9,7 @@
     'class' => 'flex flex-col overflow-hidden bg-white'
 ])}}>
     @if (isset($header))
-        <header {{ $header->attributes->class(['relative flex items-center w-full overflow-hidden']) }}>
+        <header {{ $header->attributes->merge(['class' => 'relative flex items-center w-full overflow-hidden']) }}>
             @if($header->attributes->has('image'))
                 <x-image :src="$header->attributes->get('image')"
                          class="w-full h-40 object-center object-cover bg-cover bg-no-repeat " />
@@ -23,13 +23,13 @@
     @endif
 
     @if(isset($body))
-        <main {{ $body->attributes->class(['h-fit px-6 py-4 text-gray-700']) }}>
+        <main {{ $body->attributes->merge(['class' => 'h-fit px-6 py-4 text-gray-700']) }}>
             {{$body}}
         </main>
     @endif
 
     @if(isset($footer))
-        <footer {{ $footer->attributes->class(['px-6 py-4 text-gray-700']) }}>
+        <footer {{ $footer->attributes->merge(['class' => 'px-6 py-4 text-gray-700']) }}>
             {{$footer}}
         </footer>
     @endif

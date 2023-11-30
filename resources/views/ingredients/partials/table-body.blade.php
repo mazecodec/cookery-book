@@ -5,7 +5,7 @@
             <td class="">{{ $ingredient->name }}</td>
             <td class="flex justify-end gap-2">
                 <x-secondary-button type="button"
-                                    @click="window.location='{{ route('ingredients.update', $ingredient->id) }}'">
+                                    @click="window.location='{{ route('ingredients.edit', $ingredient->id) }}'">
                     {{ __('Edit') }}
                 </x-secondary-button>
                 <form method="POST"

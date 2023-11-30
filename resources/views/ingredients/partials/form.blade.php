@@ -1,12 +1,16 @@
+@php
+//    $ingredient = new \App\Models\Ingredient();
+@endphp
 <form method="POST"
       hx-post="{{ route('ingredients.store') }}"
       hx-trigger="submit"
-      hx-target="#ingredient-list">
+      hx-target="#ingredient-list"
+class="flex flex-col w-full">
     @csrf
     <x-input-label for="name">{{ __('Name') }}</x-input-label>
     <x-text-input name="name"
                   id="name"
-                  :value="old('name')"
+                  :value="old('name', $ingredient->name ?? '')"
                   {{--                  hx-get="{{ route('ingredients.finder') }}"--}}
                   hx-boost="true"
                   hx-trigger="keyup changed"
@@ -16,12 +20,12 @@
 
 
     <x-input-label for="emoji">{{ __('Emoji') }}</x-input-label>
-    <x-text-input name="emoji" id="emoji" :value="old('emoji')"/>
+    <x-text-input name="emoji" id="emoji" :value="old('emoji', $ingredient->emoji ?? '')"/>
 
     <x-input-label for="image">{{ __('Image') }}</x-input-label>
-    <x-text-input name="image" id="image" :value="old('image')"/>
+    <x-text-input name="image" id="image" :value="old('image', $ingredient->image ?? '')"/>
 
-    <x-primary-button type="submit">{{__('Create')}}</x-primary-button>
+    <x-primary-button type="submit" class="mt-4 text-center">{{__($ingredient ? 'Update' : 'Create')}}</x-primary-button>
 </form>
 
 @fragment('filter_ingredients')

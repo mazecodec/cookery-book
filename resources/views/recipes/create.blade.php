@@ -4,7 +4,6 @@
 @vite(["resources/js/preloadImageViewer.js"])
 
 <x-app-layout>
-
     <x-container>
         <x-card class="p-9">
             <form method="POST"

@@ -4,7 +4,6 @@ namespace App\Shared\Traits;
 
 use Illuminate\Support\Str;
 use ReflectionClassConstant;
-use App\Enums\Attributes\Description;
 
 trait GetsAttributes
 {

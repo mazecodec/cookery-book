@@ -24,7 +24,7 @@ class ListRecipeController extends Controller
 
         return view('recipes.index', [
             'request' => $request->all(),
-            'recipes' => Recipe::filter($filters)->sort($sorts)->paginate(100),
+            'recipes' => Recipe::filter($filters)->sort($sorts)->paginate(8)->appends($request->query()),
         ]);
     }
 }

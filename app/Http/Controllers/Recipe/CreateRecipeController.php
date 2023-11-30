@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRecipeRequest;
 use App\Models\IngredientRecipe;
 use App\Services\ImageServices;
+use App\Shared\Enums\DifficultyLevel;
 use Illuminate\Http\RedirectResponse;
 
 class CreateRecipeController extends Controller
@@ -27,11 +28,18 @@ class CreateRecipeController extends Controller
             'user_id' => auth()->user(),
         ]);
 
-        $ingredients = $request->ingredients->forEach(function ($ingredient) {
-            return new IngredientRecipe($ingredient);
+        $finalIngredients = [];
+        $ingredients = $request->ingredients;
+        foreach ($ingredients as $ingredient) {
+            $ingredientRecipe = new IngredientRecipe($ingredient);
 
-            $ingredient->recipes()->attach($this->id);
-        });
+            $finalIngredients[] = $ingredientRecipe;
+        }
+//            ->forEach(function ($ingredient) {
+
+//
+//            $ingredient->recipes()->attach($this->id);
+//        });
 
         $recipe->ingredients()->sync($request->ingredients);
 

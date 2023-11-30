@@ -10,10 +10,10 @@ use Illuminate\Contracts\View\View;
 
 class EditIngredientController extends Controller
 {
-    public function __invoke(UpdateIngredientRequest $request, PaginateIngredients $ingredients): View
+    public function __invoke(Ingredient $ingredient): View
     {
-        return view('ingredients.index', [
-            'ingredients' => $ingredients->setRequest($request)->list(),
+        return view('ingredients.edit', [
+            'ingredient' => $ingredient,
         ]);
     }
 }
