@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Ingredient;
 
+use App\Application\Models\Ingredient;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateIngredientRequest;
-use App\Models\Ingredient;
-use App\Services\Ingredients\PaginateIngredients;
 use Illuminate\Contracts\View\View;
 
 class EditIngredientController extends Controller

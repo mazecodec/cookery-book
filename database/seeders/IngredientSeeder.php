@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Ingredient;
+use App\Application\Models\Ingredient;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
@@ -21,11 +21,11 @@ class IngredientSeeder extends Seeder
         }
 
         Ingredient::factory()->count(count($ingredients))->sequence(
-                fn(Sequence $sequence) => [
-                    'name' => $ingredients[$sequence->index]['english'],
-                    'emoji' => $ingredients[$sequence->index]['emoticon'],
-                ]
-            )->create();
+            fn(Sequence $sequence) => [
+                'name' => $ingredients[$sequence->index]['english'],
+                'emoji' => $ingredients[$sequence->index]['emoticon'],
+            ]
+        )->create();
 
     }
 }

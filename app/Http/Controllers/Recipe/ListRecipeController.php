@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Recipe;
 
+use App\Application\Models\Recipe;
+use App\Domain\Recipe\Services\Recipe\RecipeFilterService;
+use App\Domain\Recipe\Services\Recipe\RecipeSortService;
 use App\Http\Controllers\Controller;
-use App\Models\Recipe;
-use App\Services\Recipe\RecipeFilterService;
-use App\Services\Recipe\RecipeSortService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 

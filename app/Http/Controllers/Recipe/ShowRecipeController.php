@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Recipe;
 
+use App\Application\Models\Recipe;
 use App\Http\Controllers\Controller;
-use App\Models\Recipe;
 use Illuminate\Contracts\View\View;
 
 class ShowRecipeController extends Controller

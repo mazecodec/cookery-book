@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Recipe;
-use App\Models\User;
+use App\Application\Models\Recipe;
+use App\Application\Models\User;
 use App\Shared\Enums\DifficultyLevel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class RecipeFactory extends Factory
 {
+    protected $model = Recipe::class;
+
     public function definition(): array
     {
         return [

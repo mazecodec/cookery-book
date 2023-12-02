@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Recipe;
 
+use App\Application\Models\Recipe;
+use App\Domain\Recipe\Services\ImageServices;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateRecipeRequest;
-use App\Models\Recipe;
-use App\Services\ImageServices;
 use Illuminate\Http\RedirectResponse;
 
 class UpdateRecipeController extends Controller

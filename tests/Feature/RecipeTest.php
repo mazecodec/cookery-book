@@ -2,8 +2,8 @@
 
 namespace Tests\Feature;
 
-use App\Models\Recipe;
-use App\Models\User;
+use App\Application\Models\Recipe;
+use App\Application\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

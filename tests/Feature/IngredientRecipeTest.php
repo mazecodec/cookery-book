@@ -2,9 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Models\Ingredient;
-use App\Models\Recipe;
-use App\Models\User;
+use App\Application\Models\Ingredient;
+use App\Application\Models\Recipe;
+use App\Application\Models\User;
 use Tests\TestCase;
 
 class IngredientRecipeTest extends TestCase

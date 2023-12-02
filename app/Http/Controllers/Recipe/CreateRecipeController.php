@@ -2,19 +2,29 @@
 
 namespace App\Http\Controllers\Recipe;
 
+use App\Application\Models\RecipeIngredient;
+use App\Application\UseCases\CreateRecipeUseCase;
+use App\Domain\Recipe\Services\ImageServices;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRecipeRequest;
-use App\Models\IngredientRecipe;
-use App\Services\ImageServices;
 use App\Shared\Enums\DifficultyLevel;
 use Illuminate\Http\RedirectResponse;
 
 class CreateRecipeController extends Controller
 {
+    public function __construct(private readonly CreateRecipeUseCase $createRecipeUseCase)
+    {
+    }
+
     public function __invoke(
         StoreRecipeRequest $request,
         ImageServices $imageServices): RedirectResponse
     {
+        $data = $request->validated();
+
+        // Ejecutar el caso de uso para crear la receta
+        $recipe = $this->createRecipeUseCase->execute($data);
+
         $user = $request->user();
         $image = $request->hasFile('image') ? $request->file('image') : $request->image;
 
@@ -31,7 +41,7 @@ class CreateRecipeController extends Controller
         $finalIngredients = [];
         $ingredients = $request->ingredients;
         foreach ($ingredients as $ingredient) {
-            $ingredientRecipe = new IngredientRecipe($ingredient);
+            $ingredientRecipe = new RecipeIngredient($ingredient);
 
             $finalIngredients[] = $ingredientRecipe;
         }

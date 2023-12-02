@@ -2,13 +2,16 @@
 
 namespace Database\Factories;
 
+use App\Application\Models\Tags;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tags>
+ * @extends Factory<Tags>
  */
 class TagsFactory extends Factory
 {
+    protected $model = Tags::class;
+
     /**
      * Define the model's default state.
      *
@@ -16,8 +19,7 @@ class TagsFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            //
+        return [//
         ];
     }
 }

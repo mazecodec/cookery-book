@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Ingredient;
 
+use App\Application\Models\Ingredient;
+use App\Domain\Recipe\Services\Ingredients\PaginateIngredients;
 use App\Http\Controllers\Controller;
-use App\Models\Ingredient;
-use App\Services\Ingredients\PaginateIngredients;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 

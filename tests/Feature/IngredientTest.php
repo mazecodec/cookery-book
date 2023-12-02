@@ -2,10 +2,9 @@
 
 namespace Tests\Feature;
 
-use App\Models\Ingredient;
-use App\Models\User;
+use App\Application\Models\Ingredient;
+use App\Application\Models\User;
 use Tests\TestCase;
-use Throwable;
 
 class IngredientTest extends TestCase
 {
