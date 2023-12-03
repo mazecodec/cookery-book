@@ -1,5 +1,6 @@
-node_modules
-vendor
-package.lock
-composer.lock
-Makefile
+#node_modules
+/vendor
+#/public/storage
+##package.lock
+##composer.lock
+##Makefile

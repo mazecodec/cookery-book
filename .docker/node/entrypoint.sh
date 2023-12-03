@@ -8,4 +8,4 @@ fi
 npm install
 npm run dev
 
-exec docker-node-entrypoint "$@"
+#exec docker-node-entrypoint "$@"

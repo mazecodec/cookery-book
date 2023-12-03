@@ -1,85 +1,58 @@
-version: "3.9"
-services:
-    # PHP Server
-    php:
-        container_name: cookery_php
-        build:
-            context: .
-            target: php
-            args:
-                - APP_ENV=${APP_ENV}
-        env_file:
-            - .env
-        environment:
-            - APP_ENV=${APP_ENV}
-            - CONTAINER_ROLE=app
-        volumes:
-            - .:/var/www
-        ports:
-            - 8000:8000
-        depends_on:
-            - mysql
-            - redis
-        restart: on-failure
+version: '3.9'
 
-    # Node Server
-    node:
-        container_name: cookery_node
-        build:
-            context: .
-            target: node
-        volumes:
-            - .:/var/www
-            - ./node_modules:/var/www/node_modules
-        depends_on:
-            - php
-        tty: true
-
-    # Database Server
-    mysql:
-        container_name: cookery_db
-        image: mysql:8.2
-        restart: on-failure
-        ports:
-            - "3306:3306"
-        env_file:
-            - .env
-        environment:
-            - MYSQL_DATABASE=${DB_DATABASE}
-            - MYSQL_ROOT_USER=${DB_USERNAME}
-            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
-            - MYSQL_ALLOW_EMPTY_PASSWORD=true
-        volumes:
-            - db-vol:/var/lib/mysql
-
-    # Redis
-    redis:
-        container_name: cookery_redis
-        image: 'redis:alpine'
-
-    # Queue
-    queue:
-        container_name: cookery_queue
-        build:
-            context: .
-            target: php-queue
-        command: 'php artisan queue:work'
-        depends_on:
-            - php
-
-    # Mailpit
-    mailpit:
-        container_name: cookery_mailpit
-        image: axllent/mailpit
-        ports:
-            - "1025:1025"
-            - "8025:8025"
-        networks:
-            - cookery-net
 volumes:
-    db-vol: ~
+    db-vol:
+        driver: local
 
 networks:
     cookery-net:
         driver: bridge
 
+services:
+    php:
+        container_name: cookery_php
+        build:
+            context: .
+            dockerfile: ./.docker/php/Dockerfile
+            target: php
+            args:
+                - 'APP_ENV=${APP_ENV}'
+        working_dir: /var/www
+        env_file:
+            - .env
+        environment:
+            - 'APP_ENV=${APP_ENV}'
+            - CONTAINER_ROLE=app
+        volumes:
+            - '.:/var/www'
+        ports:
+            - '8000:8000'
+        depends_on:
+            mysql:
+                condition: service_healthy
+        networks:
+            - cookery-net
+
+    mysql:
+        container_name: cookery_db
+        image: 'mysql:8.2'
+        restart: unless-stopped
+        env_file:
+            - .env
+        environment:
+            - MYSQL_USER=${DB_USERNAME}
+            - MYSQL_PASSWORD=${DB_PASSWORD}
+            - MYSQL_DATABASE=${DB_DATABASE}
+            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+        volumes:
+            - db-vol:/var/lib/mysql
+        working_dir: /var/lib/mysql
+        healthcheck:
+            test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+            start_period: 5s
+            interval: 5s
+            timeout: 5s
+            retries: 55
+        tty: true
+        networks:
+            - cookery-net
