@@ -30,7 +30,7 @@ restart: stop start ## Restart all containers
 
 destroy: stop ## Destroy all containers
 	@docker compose down
-	@docker volume rm ${VOLUME_DATABASE};
+#	@docker volume rm ${VOLUME_DATABASE};
 
 cache: ## Cache project
 	docker exec ${CONTAINER_PHP} php artisan view:cache
@@ -80,3 +80,21 @@ ssh-node: ## SSH inside node container
 
 ssh-database: ## SSH inside database container
 	docker exec -it ${CONTAINER_DATABASE} sh
+
+test:
+	docker exec ${CONTAINER_PHP} php artisan test
+
+test-coverage:
+	docker exec ${CONTAINER_PHP} php artisan test --coverage
+
+test-unit:
+	docker exec ${CONTAINER_PHP} php artisan test --unit
+
+test-unit-coverage:
+	docker exec ${CONTAINER_PHP} php artisan test --unit --coverage
+
+test-feature:
+	docker exec ${CONTAINER_PHP} php artisan test --feature
+
+test-feature-coverage:
+	docker exec ${CONTAINER_PHP} php artisan test --feature --coverage

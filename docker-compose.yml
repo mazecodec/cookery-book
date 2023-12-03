@@ -1,11 +1,11 @@
 version: "3.8"
-
-services: # PHP Service
+services:
+    # PHP Server
     php:
         container_name: php
         build:
             context: .
-            target: php
+            target: composer
             args:
                 - APP_ENV=${APP_ENV}
         env_file:
@@ -13,11 +13,10 @@ services: # PHP Service
         environment:
             - APP_ENV=${APP_ENV}
             - CONTAINER_ROLE=app
-        working_dir: /var/www
         volumes:
-            - .:/var/www:delegated
+            - .:/app
         ports:
-            - "8000:8000"
+            - 8000:8000
         depends_on:
             - database
     # Node Server
@@ -25,13 +24,12 @@ services: # PHP Service
         container_name: node
         build:
             context: .
-            target: node
+            target: composer
         volumes:
             - .:/var/www
             - ./node_modules:/var/www/node_modules
         depends_on:
             - php
-        stdin_open: true
         tty: true
 
     # Database Server
@@ -51,5 +49,29 @@ services: # PHP Service
         volumes:
             - db-vol:/var/lib/mysql
 
+    # Queue
+#    queue:
+#        container_name: Queue
+#        build:
+#            context: .
+#            target: php
+#        command: 'php artisan queue:work'
+#        depends_on:
+#            - database
+
+    # Mailpit
+    mailpit:
+        image: axllent/mailpit
+        container_name: MailPit
+        ports:
+            - "1025:1025"
+            - "8025:8025"
+        networks:
+            - cookery-net
 volumes:
     db-vol: ~
+
+networks:
+    cookery-net:
+        driver: bridge
+

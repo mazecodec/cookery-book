@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,7 +31,7 @@
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white dark:bg-gray-800 shadow">
-                    <div {{$header->attributes->merge(['class' => 'flex justify-between items-center max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8'])}}
+                    <div {{$header->attributes->merge(['class' => 'flex justify-between items-center max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8'])}}>
                         {{ $header }}
                     </div>
                 </header>

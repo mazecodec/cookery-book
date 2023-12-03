@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Component;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,5 +28,6 @@ class AppServiceProvider extends ServiceProvider
         Factory::guessFactoryNamesUsing(function(string $modelName) {
             return 'Database\\Factories\\' . class_basename($modelName) . 'Factory';
         });
+        
     }
 }

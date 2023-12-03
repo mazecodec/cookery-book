@@ -4,11 +4,20 @@ namespace Tests\Feature;
 
 use App\Application\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 
 class ProfileTest extends TestCase
 {
-    use RefreshDatabase;
+//    use RefreshDatabase;
+
+    public function setUp(): void
+    {
+        dd(DB::table('users')->count());
+        parent::setUp();
+    }
+
+
 
     /**
      * @test

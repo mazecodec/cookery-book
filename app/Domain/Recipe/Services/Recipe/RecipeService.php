@@ -47,7 +47,7 @@ class RecipeService
         // Puedes realizar validaciones adicionales aquí antes de buscar la receta
 
         // Lógica de negocio para obtener la receta por ID
-        $recipe = $this->recipeRepository->findById($id);
+        $recipe = $this->recipeRepository->findByName($id);
 
         // Puedes realizar otras acciones después de obtener la receta si es necesario
 
