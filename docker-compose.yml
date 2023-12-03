@@ -2,7 +2,7 @@ version: "3.9"
 services:
     # PHP Server
     php:
-        container_name: php
+        container_name: cookery_php
         build:
             context: .
             target: php
@@ -24,7 +24,7 @@ services:
 
     # Node Server
     node:
-        container_name: node
+        container_name: cookery_node
         build:
             context: .
             target: node
@@ -37,7 +37,7 @@ services:
 
     # Database Server
     mysql:
-        container_name: db
+        container_name: cookery_db
         image: mysql:8.2
         restart: on-failure
         ports:
@@ -54,12 +54,12 @@ services:
 
     # Redis
     redis:
-        container_name: redis
+        container_name: cookery_redis
         image: 'redis:alpine'
 
     # Queue
     queue:
-        container_name: queue
+        container_name: cookery_queue
         build:
             context: .
             target: php-queue
@@ -69,8 +69,8 @@ services:
 
     # Mailpit
     mailpit:
+        container_name: cookery_mailpit
         image: axllent/mailpit
-        container_name: mailpit
         ports:
             - "1025:1025"
             - "8025:8025"
