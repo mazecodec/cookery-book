@@ -13,19 +13,24 @@
                 </h2>
 
                 <form class="flex justify-center items-center w-4/5">
-                    <x-text-input
-                        class="w-full"
-                        type="search"
-                        name="query"
-                        id="query"
-                        placeholder="Search..."
-                    ></x-text-input>
+                    <x-recipes.search-input :route="route('dashboard')" target="body"></x-recipes.search-input>
 
                     <x-primary-button type="submit" class="flex justify-center ml-4 h-full w-1/5 text-center">
                         {{ __('Search') }}
                     </x-primary-button>
                 </form>
             </div>
+        </div>
+    </x-container>
+
+    <x-container>
+        <div id="results-table-container"
+             class="w-full table-fixed my-3"
+             hx-get="{{ route('ingredients.index') }}">
+
+            @if(isset($recipes))
+                @include('dashboard.partials.table', [ 'recipes' => $recipes ])
+            @endif
         </div>
     </x-container>
 </x-app-layout>

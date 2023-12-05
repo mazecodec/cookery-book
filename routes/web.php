@@ -1,5 +1,6 @@
 <?php
 
+use App\Application\Models\Recipe;
 use App\Http\Controllers\Ingredient\CreateIngredientController;
 use App\Http\Controllers\Ingredient\DeleteIngredientController;
 use App\Http\Controllers\Ingredient\EditIngredientController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Recipe\NewRecipeViewController;
 use App\Http\Controllers\Recipe\RecipeController;
 use App\Http\Controllers\Recipe\ShowRecipeController;
 use App\Http\Controllers\Recipe\UpdateRecipeController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,8 +35,27 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/dashboard', function (Request $request) {
+    $searchTerm = $request->input('q');
+
+    if(empty($searchTerm)) {
+        return view('dashboard');
+    }
+
+    $recipes = Recipe::where('title', 'LIKE', "%$searchTerm%")->when(
+        $request->has('sort_field'), function ($query) use ($request) {
+        $sortField = $request->input('sort_field', null);
+        $sortDir = $request->input('sort_dir', 'ASC');
+        $query->orderBy($sortField, $sortDir);
+    })->when(!$request->has('sort_field'), function ($query) {
+        $query->orderBy('title', 'ASC');
+    })->paginate(15, ['id', 'title', 'description', 'image']);
+
+    if ($request->header('hx-request') && $request->header('hx-target') == 'ingredients-table-container') {
+        return view('dashboard.partials.table', compact('recipes'));
+    }
+
+    return view('dashboard', compact('recipes'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

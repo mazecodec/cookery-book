@@ -19,7 +19,12 @@
                         {{ __('List of ingredients') }}
                     </h2>
 
-                    @include('ingredients.partials.search-input')
+                    <x-recipes.search-input
+                        :route="route('ingredients.index')"
+                        minlength="1"
+                        maxlength="10"
+                        pattern="[A-z]{1-10}"
+                    ></x-recipes.search-input>
                 </div>
 
                 <div id="ingredients-table-container"
@@ -31,4 +36,4 @@
             </div>
         </div>
     </x-container>
-</x-app-layout  >
+</x-app-layout>
