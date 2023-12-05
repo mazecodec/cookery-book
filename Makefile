@@ -1,10 +1,14 @@
 .PHONY: help
 
-CONTAINER_PHP=php
-CONTAINER_NODE=node
-CONTAINER_DATABASE=database
+CONTAINER_PHP=cookery_php
+CONTAINER_NODE=cookery_node
+CONTAINER_DATABASE=cookery_db
 
 VOLUME_DATABASE=cookery-book_db-vol
+
+z:
+	composer install --no-interaction
+	yarn install
 
 a: ## Run app
 	@docker-compose rm -f
@@ -36,6 +40,15 @@ restart: stop start ## Restart all containers
 destroy: stop ## Destroy all containers
 	@docker compose down
 #	@docker volume rm ${VOLUME_DATABASE};
+
+destroy-volumes: ## Destroy all containers
+	@docker compose down -v
+
+destroy-images: ## Destroy all containers
+	@docker compose down -v --rmi all
+
+autoload: ## Dump autoload
+	docker exec ${CONTAINER_PHP} composer dump-autoload
 
 cache: ## Cache project
 	docker exec ${CONTAINER_PHP} php artisan view:cache

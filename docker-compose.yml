@@ -3,6 +3,8 @@ version: '3.9'
 volumes:
     db-vol:
         driver: local
+    redis-vol:
+        driver: local
 
 networks:
     cookery-net:
@@ -16,43 +18,142 @@ services:
             dockerfile: ./.docker/php/Dockerfile
             target: php
             args:
-                - 'APP_ENV=${APP_ENV}'
-        working_dir: /var/www
+                WWWGROUP: '${WWWGROUP}'
+                APP_ENV: '${APP_ENV}'
+        working_dir: /var/www/html
         env_file:
             - .env
         environment:
-            - 'APP_ENV=${APP_ENV}'
-            - CONTAINER_ROLE=app
+            WWWUSER: '${WWWUSER}'
+            APP_ENV: '${APP_ENV}'
+            CONTAINER_ROLE: app
         volumes:
-            - '.:/var/www'
+            - .:/var/www/html
+#            - ./public:/var/www/html/public
+#            - ./storage/app:/var/www/html/storage/app
+#            - ./vendor:/var/www/html/vendor:rw
         ports:
-            - '8000:8000'
+            - '${APP_PORT:-8000}:8000'
+            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
         depends_on:
             mysql:
                 condition: service_healthy
+            redis:
+                condition: service_healthy
+            selenium:
+                condition: service_started
+            memcached:
+                condition: service_started
+            mailpit:
+                condition: service_started
+            soketi:
+                condition: service_started
+        networks:
+            - cookery-net
+        healthcheck:
+            test: [ "CMD-SHELL", "curl -f http://localhost:${APP_PORT:-8000} || exit 1" ]
+
+    node:
+        container_name: cookery_node
+        build:
+            context: .
+            dockerfile: ./.docker/node/Dockerfile
+            target: node
+        environment:
+            NODE_VERSION: '18'
+        volumes:
+            - .:/var/www/html/public
+        depends_on:
+            php:
+                condition: service_healthy
+        tty: true
         networks:
             - cookery-net
 
     mysql:
         container_name: cookery_db
-        image: 'mysql:8.2'
-        restart: unless-stopped
+        image: mysql:8.2
+        ports:
+            - '${FORWARD_DB_PORT:-3306}:3306'
         env_file:
             - .env
         environment:
-            - MYSQL_USER=${DB_USERNAME}
-            - MYSQL_PASSWORD=${DB_PASSWORD}
-            - MYSQL_DATABASE=${DB_DATABASE}
-            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 1
         volumes:
             - db-vol:/var/lib/mysql
-        working_dir: /var/lib/mysql
         healthcheck:
-            test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
-            start_period: 5s
-            interval: 5s
-            timeout: 5s
-            retries: 55
-        tty: true
+            test: [ "CMD", "mysqladmin", "ping", "-p${DB_PASSWORD}" ]
+        networks:
+            - cookery-net
+
+    redis:
+        container_name: cookery_redis
+        image: 'redis:alpine'
+        ports:
+            - '${FORWARD_REDIS_PORT:-6379}:6379'
+        volumes:
+            - redis-vol:/data
+        networks:
+            - cookery-net
+        healthcheck:
+            test: [ "CMD", "redis-cli", "ping" ]
+
+    queue:
+        container_name: cookery_queue
+        build:
+            context: .
+            dockerfile: ./.docker/php-queue/Dockerfile
+            target: php-queue
+        command: 'php artisan queue:work'
+        depends_on:
+            php:
+                condition: service_healthy
+        networks:
+            - cookery-net
+
+    selenium:
+        container_name: cookery_selenium
+        image: selenium/standalone-chrome
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        volumes:
+            - '/dev/shm:/dev/shm'
+        networks:
+            - cookery-net
+
+    soketi:
+        container_name: cookery_soketi
+        image: 'quay.io/soketi/soketi:latest-16-alpine'
+        environment:
+            SOKETI_DEBUG: '${SOKETI_DEBUG:-1}'
+            SOKETI_METRICS_SERVER_PORT: '9601'
+            SOKETI_DEFAULT_APP_ID: '${PUSHER_APP_ID}'
+            SOKETI_DEFAULT_APP_KEY: '${PUSHER_APP_KEY}'
+            SOKETI_DEFAULT_APP_SECRET: '${PUSHER_APP_SECRET}'
+        ports:
+            - '${PUSHER_PORT:-6001}:6001'
+            - '${PUSHER_METRICS_PORT:-9601}:9601'
+        networks:
+            - cookery-net
+
+    mailpit:
+        container_name: cookery_mailpit
+        image: 'axllent/mailpit:latest'
+        ports:
+            - '${FORWARD_MAILPIT_PORT:-1025}:1025'
+            - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
+        networks:
+            - cookery-net
+
+    memcached:
+        container_name: cookery_memcached
+        image: 'memcached:alpine'
+        ports:
+            - '${FORWARD_MEMCACHED_PORT:-11211}:11211'
         networks:
             - cookery-net

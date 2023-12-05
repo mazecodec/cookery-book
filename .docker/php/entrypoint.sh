@@ -11,12 +11,17 @@ else
     echo "env file exists."
 fi
 
-#php artisan storage:link
-php artisan migrate
+chmod -R 667 /var/www/html/public
+chmod -R 667 /var/www/html/storage
+
 php artisan key:generate
+php artisan storage:link
+php artisan migrate:refresh --seed
+
 php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
+
 php artisan serve --port=$PORT --host=0.0.0.0
 
 exec docker-php-entrypoint "$@"

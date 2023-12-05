@@ -20,10 +20,12 @@ RUN docker-php-ext-install -j$(nproc) gd
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-WORKDIR /var/www
-COPY . .
+#RUN addgroup -g ${PHP_UID} www
+#RUN adduser -H -D -u ${PHP_GID} -G www www
+#RUN chown -R www:www /var/www
 
-VOLUME /var/www/vendor/
+WORKDIR /var/www/html
+ADD . .
 
 EXPOSE 8000
 
