@@ -22,4 +22,7 @@ Un recetario con ayudante de cocina:
     - Siga los tiempos a completar
     - Inclusivo, al leer las instrucciones de forma correcta ayuda a que las personas puedan seguir sin problemas cada receta, pudiendo completar las recetas de forma eficiente
 
- 
+
+https://github.com/Antevenio/ddd-example/tree/master
+https://github.com/davists/Lumen-Doctrine-DDD-Example/tree/master
+https://github.com/jorge07/ddd-playground/tree/master

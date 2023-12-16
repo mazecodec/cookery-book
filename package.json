@@ -1,4 +1,8 @@
 {
+    "name": "cookery-book",
+    "version": "1.0.0",
+    "description": "Cookery Book",
+    "license": "MIT",
     "private": true,
     "type": "module",
     "scripts": {

@@ -1,22 +1,22 @@
 <?php
 
 use App\Application\Models\Recipe;
-use App\Http\Controllers\Ingredient\CreateIngredientController;
-use App\Http\Controllers\Ingredient\DeleteIngredientController;
-use App\Http\Controllers\Ingredient\EditIngredientController;
-use App\Http\Controllers\Ingredient\FilterFinderIngredientController;
-use App\Http\Controllers\Ingredient\ShowListIngredientsController;
-use App\Http\Controllers\Ingredient\StoreIngredientController;
-use App\Http\Controllers\Ingredient\UpdateIngredientController;
+use App\Domain\Recipe\Presentation\Controllers\Ingredient\CreateIngredientController;
+use App\Domain\Recipe\Presentation\Controllers\Ingredient\DeleteIngredientController;
+use App\Domain\Recipe\Presentation\Controllers\Ingredient\EditIngredientController;
+use App\Domain\Recipe\Presentation\Controllers\Ingredient\FilterFinderIngredientController;
+use App\Domain\Recipe\Presentation\Controllers\Ingredient\ShowListIngredientsController;
+use App\Domain\Recipe\Presentation\Controllers\Ingredient\StoreIngredientController;
+use App\Domain\Recipe\Presentation\Controllers\Ingredient\UpdateIngredientController;
+use App\Domain\Recipe\Presentation\Controllers\Recipe\CreateRecipeController;
+use App\Domain\Recipe\Presentation\Controllers\Recipe\DeleteRecipeController;
+use App\Domain\Recipe\Presentation\Controllers\Recipe\EditRecipeViewController;
+use App\Domain\Recipe\Presentation\Controllers\Recipe\ListRecipeController;
+use App\Domain\Recipe\Presentation\Controllers\Recipe\NewRecipeViewController;
+use App\Domain\Recipe\Presentation\Controllers\Recipe\ShowRecipeController;
+use App\Domain\Recipe\Presentation\Controllers\Recipe\UpdateRecipeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Recipe\CreateRecipeController;
-use App\Http\Controllers\Recipe\DeleteRecipeController;
-use App\Http\Controllers\Recipe\EditRecipeViewController;
-use App\Http\Controllers\Recipe\ListRecipeController;
-use App\Http\Controllers\Recipe\NewRecipeViewController;
 use App\Http\Controllers\Recipe\RecipeController;
-use App\Http\Controllers\Recipe\ShowRecipeController;
-use App\Http\Controllers\Recipe\UpdateRecipeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 

@@ -3,8 +3,8 @@
 namespace App\Infrastructure\Eloquent\Recipe;
 
 use App\Application\Models\Recipe as RecipeModel;
-use App\Domain\Recipe\Entities\Recipe;
-use App\Domain\Recipe\Repositories\RecipeRepositoryInterface;
+use App\Domain\Recipe\Domain\AggregateRoots\Recipe;
+use App\Domain\Recipe\Domain\Repositories\RecipeRepositoryInterface;
 
 class RecipeEloquentRepository implements RecipeRepositoryInterface
 {

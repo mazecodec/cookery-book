@@ -2,9 +2,9 @@
 
 namespace App\Application\Providers;
 
-use App\Application\UseCases\CreateRecipeUseCase;
-use App\Domain\Recipe\Repositories\RecipeRepositoryInterface;
-use App\Domain\Recipe\Services\Recipe\RecipeService;
+use App\Domain\Recipe\Application\UseCases\CreateRecipeUseCase;
+use App\Domain\Recipe\Domain\Repositories\RecipeRepositoryInterface;
+use App\Domain\Recipe\Domain\Services\Recipe\RecipeService;
 use App\Infrastructure\Eloquent\Recipe\RecipeEloquentRepository;
 use Illuminate\Support\ServiceProvider;
 
